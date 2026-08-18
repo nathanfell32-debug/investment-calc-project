@@ -1,5 +1,5 @@
 import React from "react";
-import Header from './components/Header.jsx';
+import Header from './components/UserInput.jsx';
 
 function App() {
   
@@ -7,9 +7,9 @@ function App() {
     <div>
       <Header title="Investment Calculator"
       subtitle="Plan your financial future with confidence" />
-      {/* additional components goes here */}
+      <userInput onCalculate={(data) => console.log(data)} />
     </div>
   );
-};
+}
 
 export default App;
