@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
 
-const UserInput = ({ onCalculate }) => {
-  const [userInput, setUserInput] = useState({
-    initialInvestment: "",
-    annualInvestment: "",
-    expectedReturn: "",
-    duration: ""
-  });
-
-  const [currency, setCurrency] = useState("USD")
+const UserInput = ({ userInput, onInputChange }) => {
+  const [currency, setCurrency] = useState("USD");
 
   function handleChange(event) {
     const { name, value } = event.target;
 
-    setUserInput(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    //send updated values upward to App.jsx
+    onInputChange(name, value);
   }
 
   function handleSubmit(event) {
@@ -32,7 +23,8 @@ const UserInput = ({ onCalculate }) => {
       alert("Please enter positive values for all fields.");
       return;
     }
-    onCalculate({ ...userInput, currency });
+
+    alert("Values submitted successfully!");
   }
 
   function handleReset() {
@@ -56,7 +48,7 @@ const UserInput = ({ onCalculate }) => {
           <option value="GBP">GBP (£)</option>
         </select>
       </div>
-      
+
       <div className="input-group">
         <label>Initial Investment</label>
         <input
