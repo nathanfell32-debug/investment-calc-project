@@ -28,10 +28,10 @@ const UserInput = ({ userInput, onInputChange }) => {
   }
 
   function handleReset() {
-    onInputChange("initialInvestment", "");
-    onInputChange("annualInvestment", "");
-    onInputChange("expectedReturn", "");
-    onInputChange("duration", "");
+    onInputChange("initialInvestment", 10000);
+    onInputChange("annualInvestment", 1200);
+    onInputChange("expectedReturn", 6);
+    onInputChange("duration", 10);
     setCurrency("USD");
   }
 

@@ -1,31 +1,29 @@
-import jsPDF from 'jspdf';
+import jsPDF from "jsPDF";
 
-export function generatepdf(data){
+export function generatePDF(resultData, viewMode) {
     const doc = new jsPDF();
 
-    doc.setFontSize(20);
-    doc.text('Investment Report', 10, 10);
+    doc.setFontSize(18);
+    doc.text("Investment Report", 10, 10);
+
     doc.setFontSize(12);
-    doc.text(`Beginning Investment: ${data.initialInvestment}`, 10, 30);
-    doc.text(`Annual Investment: ${data.annualInvestment}`, 10, 40);
-    doc.text(`Return on Investment: ${data.expectedReturn}%`, 10, 50);
-    doc.text(`Years of Investment: ${data.duration}`, 10, 60);
+    doc.text(`View Mode: ${viewMode === "yearly" ? "Yearly" : "Monthly"}`, 10, 20);
 
-    let yOffset = 80;
-    const linespacing = 10;
-    const pageHeight = doc.internal.pageSize.height
-    data.results.forEach((result) =>{
-        if (yOffset+50 > pageHeight){
+    let y = 30;
+
+    resultData.forEach((row) => {
+        const label = viewMode === "yearly" ? `Year ${row.year}` : `Month ${row.month}`;
+        const line = `${label} | Value: £${row.investmentValue.toFixed(2)} | Interest: £${row.interest.toFixed(2)}`;
+
+        doc.text(line, 10, y);
+        y += 10;
+
+        //prevent text going off the page
+        if (y > 280) {
             doc.addPage();
-            yOffset = 20;
+            y = 20;
         }
-        doc.text(`Year: ${result.year}`, 10, yOffset)
-        doc.text(`Interest (Year): ${result.interest.toFixed(2)}`,10, (yOffset+linespacing))
-        doc.text(`Interest (Total): ${result.totalInterest.toFixed(2)}`,10, (yOffset+2*linespacing))
-        doc.text(`Invested Capital: ${result.investedCap.toFixed(2)}`,10, (yOffset+3*linespacing))
-        doc.text(`Total Investment Value: ${result.investmentValue.toFixed(2)}`,10, (yOffset+4*linespacing))
+    });
 
-        yOffset+=60;
-    })
-    doc.save('Investment Report.pdf')
+    doc.save("investment-report.pdf");
 }
