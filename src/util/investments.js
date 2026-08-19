@@ -6,6 +6,7 @@ export function calculateInvestmentResults(
         duration
     }
 ){
+
     const annualData=[];
     let investmentValue=initialInvestment;
     let totalInterest = 0;
@@ -26,3 +27,43 @@ export function calculateInvestmentResults(
     }
     return annualData
 }
+
+export function calculateMonthlyResults({
+    initialInvestment,
+    annualInvestment,
+    expectedReturn,
+    duration
+}) {
+    const monthlyData = [];
+    let investmentValue = initialInvestment;
+    let totalInterest = 0;
+    let investedCap = initialInvestment;
+
+    const monthlyReturnRate = (expectedReturn / 100) / 12;
+    const monthlyInvestment = annualInvestment / 12;
+    const totalMonths = duration * 12;
+
+    for (let i = 0; i < totalMonths; i++) {
+        const interestEarned = investmentValue * monthlyReturnRate;
+        totalInterest += interestEarned;
+        investedCap += monthlyInvestment;
+        investmentValue += interestEarned + monthlyInvestment;
+
+        monthlyData.push({
+            month: i + 1,
+            interest: interestEarned,
+            investmentValue,
+            totalInterest,
+            investedCapital: investedCap
+        });
+    }
+
+    return monthlyData;
+}
+
+export const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+});

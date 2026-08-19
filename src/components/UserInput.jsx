@@ -15,10 +15,10 @@ const UserInput = ({ userInput, onInputChange }) => {
 
     //basic validation bonus challenge
     if (
-      userInput.initialInvestment <= 0 ||
-      userInput.annualInvestment <= 0 ||
-      userInput.expectedReturn <= 0 ||
-      userInput.duration <= 0
+      +userInput.initialInvestment <= 0 ||
+      +userInput.annualInvestment <= 0 ||
+      +userInput.expectedReturn <= 0 ||
+      +userInput.duration <= 0
     ) {
       alert("Please enter positive values for all fields.");
       return;
@@ -28,12 +28,10 @@ const UserInput = ({ userInput, onInputChange }) => {
   }
 
   function handleReset() {
-    setUserInput({
-      initialInvestment: "",
-      annualInvestment: "",
-      expectedReturn: "",
-      duration: ""
-    });
+    onInputChange("initialInvestment", "");
+    onInputChange("annualInvestment", "");
+    onInputChange("expectedReturn", "");
+    onInputChange("duration", "");
     setCurrency("USD");
   }
 
