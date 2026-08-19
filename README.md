@@ -36,3 +36,10 @@ highlighting - automatically highlights the row with the highest interest earned
 The calculator uses user inputs: initial investments, annual investment, expected return (%), duration(years), these values are processed through custom utility functions such as - calculateInvestmentResults() for yearly breakdown and calculateMonthlyResults() for monthly breakdowns.
 
 currency formatting is handled via a shared formatter utility.
+
+activity 29 - Enhancing the Investment Calculator - the final activity for the investment calculator app, the goal was to enhance an existing investment calculator by adding validation, error handling, performance improvements, a PDF export feature using a PDF generation utility, and optional bonus functionality.
+
+i also implemented bonus challenges such as an investment growth chart, built with Recharts which shows investment growth over time, supporting both monthly and yearly view modes.
+the 2nd bonus challenge was a comparison scenario including a second input panel, second dataset, second results table, dual-line comparison chart, summary values for both scenarios. This allows users to compare two investment strategies side by side.
+
+
