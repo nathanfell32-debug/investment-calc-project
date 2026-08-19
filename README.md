@@ -1,3 +1,6 @@
+The project - A simple, interactive investment calculator built with React and Vite.
+It allows users to explore how an investment grows over time, with both yearly and monthly breakdowns.
+
 Investment Calculator – Header Component
 A practical React Essentials project built as part of the ITonlinelearning curriculum. This module introduces component structure, props, asset handling, and responsive design in React.
 
@@ -19,3 +22,17 @@ What was added - UserInput.jsx component, controlled form fields using useState,
 activity 27 - Create an Output Component for the Investment Calculator App. building upon the previous activity and the investment calculator project.
 
 what was added - added investment results table, added input validation (bonus challenge)
+
+activity 28 - Implement a Results Table for the Investment Calculator App - building upon activity 25 - 
+
+Dynamic investment table, calculates and displays investment growth over the selected duration.
+
+yearly/monthly view toggle - switch between yearly and monthly breakdowns instantly.
+
+automatic calculation - investment value, interest earned, total interest, total invested capital.
+
+highlighting - automatically highlights the row with the highest interest earned.
+
+The calculator uses user inputs: initial investments, annual investment, expected return (%), duration(years), these values are processed through custom utility functions such as - calculateInvestmentResults() for yearly breakdown and calculateMonthlyResults() for monthly breakdowns.
+
+currency formatting is handled via a shared formatter utility.
